@@ -7,6 +7,7 @@ import stopBody from "../../module/stopBody";
 import useRequest from "../../customHooks/useRequest";
 import useIntersectionObs from "../../customHooks/useIntersectionObs";
 import useWindowSize from "../../customHooks/useWindowSize";
+import useResizePics from "../../customHooks/useResizePics";
 import useImageWaiting from "../../customHooks/useImageWaiting";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -21,7 +22,8 @@ const DisplayCard = ({ path, title, id, user_id }) => {
   const cardRef = useRef();
   const imageRef = useRef();
   const windowWidth = useWindowSize();
-  const cardOpacity = useIntersectionObs(cardRef,windowWidth);
+  const resizePath = useResizePics(path, "w_0.10,c_scale");
+  const cardOpacity = useIntersectionObs(cardRef, windowWidth);
   const imageIsLoaded = useImageWaiting(imageRef);
 
   const openModal = () => {
@@ -56,7 +58,7 @@ const DisplayCard = ({ path, title, id, user_id }) => {
       </div>
       <div className="display-pics-image">
         <img
-          src={path}
+          src={resizePath}
           alt={title}
           className={"display-pics-image"}
           onClick={openModal}

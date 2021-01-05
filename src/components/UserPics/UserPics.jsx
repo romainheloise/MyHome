@@ -8,12 +8,17 @@ import "react-multi-carousel/lib/styles.css";
 import { responsive } from "../../module/carRespo";
 import useRequest from "../../customHooks/useRequest";
 import { useEffect, useState } from "react";
+import useResizePics from "../../customHooks/useResizePics";
 
 const UserPics = ({ match }) => {
   const [gallery, setGallery] = useState([]);
   const userInfo = useRequest("get", "users/" + match.params.id);
   const family = useRequest("get", "family/" + userInfo.data.family_id);
   const galleryReq = useRequest("get", "pics/?user_id=" + match.params.id);
+  const resizePic = useResizePics(
+    userInfo.data.profile,
+    "c_fill,h_200,q_60,w_200"
+  );
 
   useEffect(() => {
     setGallery(galleryReq.data);
@@ -28,7 +33,7 @@ const UserPics = ({ match }) => {
             <div
               className="userpics-profile"
               style={{
-                backgroundImage: `url(${userInfo.data.profile} )`,
+                backgroundImage: `url(${resizePic} )`,
               }}
             ></div>
             <div className="userpics-info-text">

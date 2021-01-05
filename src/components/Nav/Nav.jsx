@@ -10,11 +10,13 @@ import { GoSignIn } from "react-icons/go";
 import { FaSearch } from "react-icons/fa";
 import { BsPencilSquare } from "react-icons/bs";
 import SignIn from "../Sign/SignIn";
+import useResizePics from '../../customHooks/useResizePics'
 
 const Nav = () => {
   const [userStatus, setUserStatus] = useContext(UserContext);
   const [displayUserMenu, setDisplayUserMenu] = useState(false);
   const [displaySignIn, setDisplaySignIn] = useState(false);
+  const resizePic = useResizePics(userStatus.profile, "c_fill,h_100,q_60,w_100");
   const mainBtnRef = useRef();
   const signInBtnRef = useRef();
   const nodeRef = useRef(null);
@@ -33,7 +35,7 @@ const Nav = () => {
                 <div
                   className="menu-profile-pic"
                   style={{
-                    backgroundImage: `url('${userStatus.profile}')`,
+                    backgroundImage: `url('${resizePic}')`,
                   }}
                   onClick={() => {
                     setDisplayUserMenu(!displayUserMenu);
@@ -74,7 +76,11 @@ const Nav = () => {
               <p>Home</p>
             </li>
           </NavLink>
-          <NavLink to="/" activeClassName="selected" className="home-link-small">
+          <NavLink
+            to="/"
+            activeClassName="selected"
+            className="home-link-small"
+          >
             <li>
               <RiHomeHeartFill className="nav-menu-icon" />
               <p>Home</p>

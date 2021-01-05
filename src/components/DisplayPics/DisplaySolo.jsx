@@ -9,12 +9,13 @@ import { ModalContext } from "../Routes/RoutesApp";
 import useOutsideAlerter from "../../customHooks/useOutsideAlerter";
 import useRequest from "../../customHooks/useRequest";
 import useWindowSize from "../../customHooks/useWindowSize";
+import MiniLoader from "../MiniLoader/MiniLoader";
 
 const DisplaySolo = () => {
   const [commentsState, setCommentsState] = useState([]);
   const [formatDate, setFromatDate] = useState("");
   const [divSize, setDivsize] = useState({
-    photo: 0,
+    photo: null,
   });
   const [commentsBoxSize, setCommentsBoxSize] = useState(0);
   const [displayModal, setDisplayModal] = useContext(ModalContext);
@@ -37,7 +38,7 @@ const DisplaySolo = () => {
   useEffect(() => {
     const commentsBox = divSize.photo - topcom.current.offsetHeight || 0;
     setCommentsBoxSize(commentsBox);
-  }, [divSize.photo, topcom]);
+  });
 
   useEffect(() => {
     if (photos.data && photos.data.creation) {
@@ -61,14 +62,16 @@ const DisplaySolo = () => {
       style={{ top: window.scrollY + "px" }}
     >
       <div className="solo-photo-photo" onClick={(e) => e.stopPropagation()}>
-        <img
-          src={photos.data.path}
-          alt={photos.data.title}
-          ref={imageRef}
-          onLoad={() => {
-            setDivsize({ ...divSize, photo: imageRef.current.clientHeight });
-          }}
-        />
+        <MiniLoader sizeAll={20} loadingValue={photos.loading}>
+          <img
+            src={photos.data.path}
+            alt={photos.data.title}
+            ref={imageRef}
+            onLoad={() => {
+              setDivsize({ ...divSize, photo: imageRef.current.clientHeight });
+            }}
+          />
+        </MiniLoader>
         <div className="solo-info-wrapper">
           <div className="solo-info-card-container">
             <div className="solo-info-card-main">

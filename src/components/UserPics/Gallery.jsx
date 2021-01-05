@@ -11,6 +11,7 @@ import useIntersectionObs from "../../customHooks/useIntersectionObs";
 import MiniLoader from "../MiniLoader/MiniLoader";
 import { Redirect } from "react-router-dom";
 import useWindowSize from "../../customHooks/useWindowSize";
+import useResizePics from "../../customHooks/useResizePics";
 
 const Gallery = ({ path, id, userId, galleryState, title }) => {
   const [userStatus] = useContext(UserContext);
@@ -22,6 +23,7 @@ const Gallery = ({ path, id, userId, galleryState, title }) => {
   const cardOpacity = useIntersectionObs(cardRef);
   const windowWidth = useWindowSize();
   const [redirect, setRedirect] = useState(false);
+  const resizePic = useResizePics(path, "c_fill,h_250,q_60,w_250");
 
   const deletePic = async (e) => {
     e.preventDefault();
@@ -61,7 +63,7 @@ const Gallery = ({ path, id, userId, galleryState, title }) => {
     >
       <div
         className="gallery-pics"
-        style={{ backgroundImage: `url(${path})` }}
+        style={{ backgroundImage: `url(${resizePic})` }}
         onClick={dispModal}
         onMouseLeave={() => setDisplayInfo(false)}
         onMouseOver={() => setDisplayInfo(true)}
@@ -93,3 +95,5 @@ const Gallery = ({ path, id, userId, galleryState, title }) => {
 };
 
 export default Gallery;
+
+

@@ -4,16 +4,21 @@ import "./UserProfileIcone.scss";
 import { ModalContext } from "../Routes/RoutesApp";
 import recoverBody from "../../module/recoverBody";
 import useRequest from "../../customHooks/useRequest";
+import useResizePics from "../../customHooks/useResizePics";
 
 const UserProfileIcone = ({ id, size }) => {
   const [displayModal, setDisplayModal] = useContext(ModalContext);
   const userInfo = useRequest("get", "users/" + id);
+  const resizePic = useResizePics(
+    userInfo.data.profile,
+    "c_fill,h_100,q_60,w_100"
+  );
   return (
     <Link to={"/users/" + id} draggable="false">
       <div
         className="userprofile-icone"
         style={{
-          backgroundImage: `url(${userInfo.data.profile})`,
+          backgroundImage: `url(${resizePic})`,
           width: size + "px",
           height: size + "px",
         }}
@@ -28,3 +33,5 @@ const UserProfileIcone = ({ id, size }) => {
 };
 
 export default UserProfileIcone;
+
+
