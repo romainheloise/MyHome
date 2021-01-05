@@ -1,0 +1,65 @@
+.solo-comm-container {
+  display: flex;  
+  background-color: var(--color-one);
+  border-radius: 5px;
+  margin: 0.5em;
+  padding: 0.5em;
+  max-width: 300px;
+
+  
+
+  button {
+    background-color: inherit;
+    border: none;
+    border-width: 0;
+    align-self: flex-start;
+    margin-left: auto;
+    color: var(--color-four);
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover{
+      color:var(--color-six)
+    }
+  }
+
+  .solo-comm-info {
+    overflow-wrap: anywhere;
+    margin-left: 1em;
+  }
+}
+
+.comments-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .comments-input{
+    display: flex;
+    place-content: center;
+  }
+
+  .comments-put {
+    background-color: var(--color-one);
+    border-width: 0;
+    border: none;
+    padding: 0.4em;
+    border-radius: 5px 0 0 5px;
+    height: 21px;
+    &::placeholder {
+      text-align: center;
+    }
+  }
+
+  .add-com {
+    border: none;
+    border-width: 0;
+    padding: 0.4em;
+    background-color: var(--color-one);
+    border-radius: 0 5px 5px 0;
+    color: var(--color-four);
+    transition: 0.2s;
+  }
+  .add-com:hover {
+    color: var(--color-three);
+  }
+}

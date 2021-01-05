@@ -1,0 +1,140 @@
+.userpics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+
+  .userpics-wrapper {
+    width: 50%;
+    margin-top: -100px;
+    z-index: 2;
+  }
+
+  .userpics-family-title {
+    h2 {
+      margin-top: 1em;
+      color: var(--color-four);
+    }
+  }
+
+  .userpics-fam-members {
+    display: flex;
+    border-top: var(--color-two) 1px solid;
+    border-bottom: var(--color-two) 1px solid;
+  }
+
+  .userpics-info-text {
+    margin-top: 2.5em;
+    margin-left: 2em;
+    color: var(--color-four);
+
+    flex-grow: 2;
+    h2 {
+      font-size: xx-large;
+      font-family: "Satisfy", cursive;
+    }
+
+    h3 {
+      background-color: var(--color-three);
+      padding: 0.5em;
+      margin: 0.5em;
+      border-radius: 5px;
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        background-color: var(--color-two);
+        top: -2px;
+        left: -2px;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+      }
+    }
+    .userpics-info-top {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      flex-wrap: wrap;
+      h2 {
+        color: var(--color-two);
+        text-shadow: 1px 1px 0px var(--color-four);
+      }
+    }
+
+    .btn-3d {
+      display: flex;
+      place-content: center;
+      position: relative;
+      background-color: red;
+      margin-left: 1em;
+      width: 80px;
+      color: var(--color-one);
+      cursor: pointer;
+      border: 1px solid var(--color-seven);
+      border-radius: 5px;
+      z-index: 0;
+      transition: 0.2s;
+      &::after {
+        content: "";
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-six);
+        position: absolute;
+        top: -2px;
+        left: 0;
+        border-radius: inherit;
+      }
+      &:hover {
+        color: var(--color-four);
+      }
+    }
+  }
+
+  h3 {
+    color: var(--color-four);
+  }
+
+  .userpics-info {
+    display: flex;
+    padding: 1em;
+    flex-wrap: wrap;
+  }
+  .userpics-profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-size: cover;
+    border: 3px solid var(--color-two);
+  }
+  .userpics-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .userpics-container {
+    width: 100%;
+    .userpics-profile {
+      width: 100px;
+      height: 100px;
+    }
+    .userpics-wrapper {
+      width: 95%;
+      .userpics-info {
+        flex-wrap: inherit;
+
+        align-items: center;
+      }
+    }
+  }
+}

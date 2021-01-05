@@ -1,0 +1,68 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+  margin-right: 1em;
+
+  .gallery-top-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-two);
+    opacity: 0;
+    transition: 0.2s;
+    color: var(--color-one);
+    font-weight: bolder;
+    font-size: large;
+  }
+
+  .gready {
+    opacity: 0.7;
+  }
+
+  .gallery-pics {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border: var(--color-three) 5px solid;
+  }
+
+  button {
+    margin: 0.5em;
+    padding: 0.2em;
+    display: flex;
+    place-content: center;
+    position: relative;  
+    margin-left: 1em;
+    width: 80px;
+    color: var(--color-one);
+    cursor: pointer;
+    border: 1px solid var(--color-seven);
+    border-radius: 5px;
+    z-index: 0;
+    transition: 0.2s;
+    &::after {
+      content: "";
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-six);
+      position: absolute;
+      top: -2px;
+      left: 0;
+      border-radius: inherit;
+    }
+    &:hover {
+      color: var(--color-four);
+    }
+  }
+}

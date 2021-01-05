@@ -1,0 +1,83 @@
+.solo-container {
+  z-index: 15;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  overflow-y: hidden;
+
+  .solo-photo-photo {
+    height: fit-content;
+    display: flex;
+    flex-wrap: nowrap;
+
+    img {
+      object-fit: contain;
+      max-width: 100%;
+      height: 600px;
+      min-width: 330px;
+      display: block;
+    }
+  }
+  .solo-info-wrapper {
+    width: fit-content;
+    .solo-info-card-container {
+      height: 100%;
+      width: fit-content;
+      .solo-info-card-main {
+        height: 100%;
+        width: 100%;
+        background-color: var(--color-two);
+        display: flex;
+        flex-direction: column;
+        .solo-info-center {
+          align-self: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          & > * {
+            padding: 0.3em;
+          }
+        }
+        .solo-title {
+          padding: 1em;
+          color: var(--color-one);
+          display: flex;
+          flex-direction: column;
+          h2 {
+            font-family: "Satisfy", cursive;
+            font-size: x-large;
+            margin-bottom: 0.5em;
+          }
+        }
+        .solo-comms {
+          overflow-y: scroll;
+        }
+      }
+    }
+  }
+}
+
+.my-modal-enter {
+  opacity: 0;
+  transform: translateY(-25px);
+}
+.my-modal-enter-active {
+  opacity: 1;
+  transition: 200ms;
+  transform: translateY(0);
+}
+.my-modal-exit {
+  opacity: 1;
+}
+.my-modal-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+
